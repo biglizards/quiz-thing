@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>QUIZTIME</title>
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText)
+        var data = JSON.parse(this.responseText)
+        questions = data.questions
+      }
+    };
+    xhttp.open("GET", "/questions/{{quiz_id}}", true);
+    xhttp.send();
+  </script>
+  <script src="/js/quiz.js"></script>
+
+</head>
+
+<body onload="nextQuestion()">
+  <div class="container" style="width: 50%; margin:auto;">    
+    <h1>QUIZ<br>UIZ<br>IZ<br>Z</h1>
+    
+    <div id="quizArea">
+      <h3>Question <span id="questionNum">0</span></h3>
+      <h2 id="questionName"></h2>
+
+      <label><input type="radio" name="answer" value="a"> <span id="texta"></span> </label>
+      <label><input type="radio" name="answer" value="b"> <span id="textb"></span> </label>
+      <label><input type="radio" name="answer" value="c"> <span id="textc"></span> </label>
+      <label><input type="radio" name="answer" value="d"> <span id="textd"></span> </label>
+
+      <button onclick="submitAnswer()">Submit</button>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
