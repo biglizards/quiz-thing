@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>QUIZTIME</title>
+  <link rel="stylesheet" href="/css/custom.css">
+  <script src="js/editor.js"></script>
+  <template id="template">
+    <div id="question{qnum}">
+      <h2>Question:</h2>
+      <input id="question{qnum}name" type="text" oninput="setQuestionName(this)">
+      <h3>Answers:</h3>
+      <table>
+        <tr>
+          <th>A:</th>
+          <th><input type="text" id="question{qnum}a" oninput="setAnswer(this)"></th>
+          <th>B:</th>
+          <th><input type="text" id="question{qnum}b" oninput="setAnswer(this)"></th>
+        </tr>
+        <tr>
+          <th>C:</th>
+          <th><input type="text" id="question{qnum}c" oninput="setAnswer(this)"></th>
+          <th>D:</th>
+          <th><input type="text" id="question{qnum}d" oninput="setAnswer(this)"></th>
+        </tr>
+      </table>
+      Correct answer: 
+      <select id="answer{qnum}" onchange="setCorrectAnswer(this)">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+      </select>
+    </div>
+  </template>
+</head>
+
+<body onload="setDefaultQuiz()">
+  <div class="container" style="width: 50%; margin:auto;">    
+    <h1>Its an editor</h1>
+    
+    <textarea id="textArea" rows="30" cols="100">{}</textarea>
+    <br>
+
+    <input type="text" oninput="setID(this)">    
+    <br>
+    <button onclick="submit()">submit</button>
+    <button onclick="setDefaultQuiz()">reset</button>
+    <button onclick="addQuestion()">add</button>
+    
+    <div id="questionArea"></div>
+    
+    
+  </div>
+</body>
+
+</html>

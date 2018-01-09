@@ -1,10 +1,11 @@
 from flask import Flask, render_template
-from flask import request, abort
+from flask import request, abort, send_from_directory
 import json
 
 app = Flask(__name__)
-questions = {'default':'foo'}
+questions = {}
 
+# add default just for testing
 questions['foo'] = open("quiz/questions.js", "r").read()
 
 @app.route("/")
@@ -21,9 +22,13 @@ def get_quiz(quiz_id):
 def get_questions(quiz_id):
     return questions.get(quiz_id) 
 
-@app.route("/js/quiz.js")
-def get_quiz_js():
-    return app.send_static_file("js/quiz.js")
+@app.route("/js/<path:file>")
+def get_quiz_js(file):
+    return send_from_directory("static/js", file)
+
+@app.route("/editor")
+def get_editor():
+    return app.send_static_file("editor.html")
 
 @app.route("/submit", methods=['POST','GET'])
 def post_submit():
