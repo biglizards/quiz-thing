@@ -14,6 +14,16 @@ defaultQuestion = {
       "correctAnswer": "a"
     }
 
+function submit() {
+  text_area = document.getElementById("textArea");
+  
+  var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+  xmlhttp.open("POST", "/submit");
+  xmlhttp.setRequestHeader("Content-Type", "application/json");
+  xmlhttp.send(text_area.value);
+
+}
+
 function setDefaultQuiz() {
   editTextArea(quiz => Object.assign(quiz, defaultQuiz))
 }
