@@ -33,7 +33,7 @@ function nextQuestion() {
 }
 
 function endQuiz() {
-  document.getElementById("quizArea").innerHTML = `<h3>Thanks for playing The quiz!<br>Your final score was ${score}/5`
+  document.getElementById("quizArea").innerHTML = `<h3>Thanks for playing The quiz!<br>Your final score was ${score}/${questions.length}`
 }
 
 function submitAnswer() {

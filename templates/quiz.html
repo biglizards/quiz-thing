@@ -4,7 +4,8 @@
 <head>
   <title>QUIZTIME</title>
   <link rel="stylesheet" href="/css/custom.css">
-  
+  <script src="/js/quiz.js"></script>
+
   <script>
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -12,16 +13,17 @@
         console.log(this.responseText)
         var data = JSON.parse(this.responseText)
         questions = data.questions
+        nextQuestion();
       }
     };
     xhttp.open("GET", "/questions/{{quiz_id}}", true);
     xhttp.send();
   </script>
-  <script src="/js/quiz.js"></script>
+
 
 </head>
 
-<body onload="nextQuestion()">
+<body>
   <div class="container" style="width: 50%; margin:auto;">    
     <h1>QUIZ<br>UIZ<br>IZ<br>Z</h1>
     
