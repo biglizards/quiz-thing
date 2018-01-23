@@ -4,6 +4,7 @@
 <head>
   <title>QUIZTIME</title>
   <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
   <script src="js/editor.js"></script>
   <template id="template">
     <div id="question{qnum}">
@@ -42,14 +43,20 @@
     <textarea id="textArea" rows="30" cols="100">{}</textarea>
     <br>
 
-    <input type="text" oninput="setID(this)">    
+    <input type="text" oninput="setID(this)" placeholder="quiz name">    
     <br>
     <button onclick="submit()">submit</button>
     <button onclick="setDefaultQuiz()">reset</button>
-    <button onclick="addQuestion()">add</button>
+    <button onclick="addQuestion()">add question</button>
+
+    <div style="height:20px;"></div>
+
+    <div style="display:none;" class="alert alert-danger" id="alertbad">Quiz name already taken; choose another</div>
+    <div style="display:none;" class="alert alert-success" id="alertgood">Success! return to the main menu to access the quiz</div>
     
     <div id="questionArea"></div>
     
+    <label><input type="checkbox" onclick='toggleDevMode(this);'>dev mode</label>
     
   </div>
 </body>

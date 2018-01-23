@@ -15,13 +15,29 @@ defaultQuestion = {
     }
 
 function submit() {
+  hideAlertBoxes();
   text_area = document.getElementById("textArea");
   
   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+  xmlhttp.onload = function() {
+    if (this.status >= 200 && this.status < 400) {
+      document.getElementById("alertgood").style.display = 'block';
+    } else {
+      document.getElementById("alertbad").style.display = 'block';
+    }
+  };
   xmlhttp.open("POST", "/submit");
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.send(text_area.value);
+}
 
+function hideAlertBoxes() {
+  document.getElementById("alertbad").style.display = 'none';
+  document.getElementById("alertgood").style.display = 'none';
+}
+
+function toggleDevMode(checkbox) {
+  document.getElementById("textArea").style.display = checkbox.checked ? 'block' : 'none'; 
 }
 
 function setDefaultQuiz() {

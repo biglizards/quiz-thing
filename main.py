@@ -26,6 +26,10 @@ def get_questions(quiz_id):
 def get_quiz_js(file):
     return send_from_directory("static/js", file)
 
+@app.route("/css/<path:file>")
+def get_quiz_css(file):
+    return send_from_directory("static/css", file)
+
 @app.route("/editor")
 def get_editor():
     return app.send_static_file("editor.html")

@@ -4,6 +4,7 @@
 <head>
   <title>QUIZTIME</title>
   <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
   <script src="/js/quiz.js"></script>
 
   <script>
@@ -31,10 +32,17 @@
       <h3>Question <span id="questionNum">0</span></h3>
       <h2 id="questionName"></h2>
 
-      <label><input type="radio" name="answer" value="a"> <span id="texta"></span> </label>
-      <label><input type="radio" name="answer" value="b"> <span id="textb"></span> </label>
-      <label><input type="radio" name="answer" value="c"> <span id="textc"></span> </label>
-      <label><input type="radio" name="answer" value="d"> <span id="textd"></span> </label>
+    <table>
+      <tr>
+        <th><label class="answer"><input type="radio" name="answer" value="a"> <span id="texta"></span> </label></th>
+        <th><label class="answer"><input type="radio" name="answer" value="b"> <span id="textb"></span> </label></th>
+      </tr>
+      <tr>
+        <th><label class="answer"><input type="radio" name="answer" value="c"> <span id="textc"></span> </label></th>
+        <th><label class="answer"><input type="radio" name="answer" value="d"> <span id="textd"></span> </label></th>
+      </tr>
+    </table>
+
 
       <button onclick="submitAnswer()">Submit</button>
     </div>
